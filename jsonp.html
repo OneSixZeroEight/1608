@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+
+	<body>
+		<button onclick="ajax(1)">Ok</button>
+		<p id="p">默认的文本</p>
+		
+		<button onclick="jsonp('http://1.wsscatwsscat.applinzi.com/getJson.php')">jsonp</button>
+		<p id="p2">默认的文本</p>
+	</body>
+	<!--node.js-->
+	<script>
+		/*function ajax(str) {
+			console.log("1")
+			var xmlhttp;
+			xmlhttp = new XMLHttpRequest();
+			xmlhttp.open("GET", "http://1.wsscatwsscat.applinzi.com/test.php?str=" + str, true);
+			xmlhttp.send();
+			xmlhttp.onreadystatechange = function() {
+				if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+					var jsonObj = JSON.parse(xmlhttp.responseText);
+					console.log(jsonObj)
+					document.getElementById("p").innerHTML = jsonObj.name;
+				}
+			}
+		}*/
+	</script>
+	<!--<script>
+		function JSON_CALLBACK(data){
+			return data
+		}
+	</script>-->
+	<script>
+		function JSON_CALLBACK(data) {
+			console.log(data)
+			document.getElementById("p2").innerHTML = data.name;
+			return data
+		}
+	</script>
+	<script>
+		function jsonp (url) {
+			var script = document.createElement('script');
+			script.setAttribute('src',url);
+			document.body.appendChild(script);
+		}
+	</script>
+	<!--<script src="getJson.php"></script>-->
+	<!--<script>
+		JSON_CALLBACK({"name":"wsscat","age":"1"})
+	</script>-->
+
+</html>
